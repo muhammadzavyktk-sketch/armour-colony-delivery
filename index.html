@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armour Colony Delivery Service — We deliver, you relax</title>
+<meta name="description" content="Same-day grocery and daily-essentials delivery across Armour Colony, Phase 1–3. Order on WhatsApp, pay on Easypaisa, open 12 PM–12 AM.">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0f3d2e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Armour Delivery">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#0f3d2e;
+    --forest-deep:#0a2b20;
+    --green:#2f9e5c;
+    --green-dim:#237a48;
+    --green-light:#e9f5ec;
+    --gold:#f0b429;
+    --gold-deep:#c98f0f;
+    --paper:#f7f4ea;
+    --paper-alt:#efe9d8;
+    --ink:#15241c;
+    --ink-soft:#4c5d53;
+    --line:rgba(15,61,46,0.14);
+    --shadow: 0 20px 50px -25px rgba(15,61,46,0.45);
+    --radius: 18px;
+    --grad-primary: linear-gradient(135deg, #34ad68 0%, #1f7a46 55%, #f0b429 100%);
+    --grad-dark: linear-gradient(160deg, #154a37 0%, #0f3d2e 45%, #071c14 100%);
+    --grad-gold: linear-gradient(135deg, #f7c948 0%, #c98f0f 100%);
+    --grad-paper: linear-gradient(150deg, #faf7ea 0%, #f1ead4 55%, #e7f2e9 100%);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:0.02em;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px;}
+  section{padding:100px 0;}
+  section[id]{scroll-margin-top:96px;}
+  @media (max-width:720px){ section{padding:64px 0;} .wrap{padding:0 20px;} section[id]{scroll-margin-top:78px;} }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:linear-gradient(120deg, rgba(21,74,55,0.97) 0%, rgba(10,43,32,0.97) 100%);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 0;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    color:#fbf9f2;text-decoration:none;
+  }
+  .brand-mark{width:34px;height:34px;flex:0 0 auto;}
+  .brand-name{
+    font-family:'Fraunces',serif;font-weight:700;font-size:17px;
+    line-height:1.15;
+  }
+  .brand-name small{
+    display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;
+    font-size:10.5px;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;
+  }
+  nav.links{display:flex;gap:30px;}
+  nav.links a{
+    color:#e9e5d8;text-decoration:none;font-size:14.5px;font-weight:500;
+    opacity:0.85;transition:opacity .2s;
+  }
+  nav.links a:hover{opacity:1;}
+  .cta-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--grad-primary);color:#fff;
+    font-weight:700;font-size:14px;
+    padding:11px 20px;border-radius:100px;text-decoration:none;
+    box-shadow:0 10px 24px -10px rgba(31,122,70,0.6);
+    transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    white-space:nowrap;
+  }
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(31,122,70,0.75);filter:brightness(1.05);}
+  .cta-btn.ghost{
+    background:transparent;color:#fbf9f2;border:1px solid rgba(255,255,255,0.35);
+    box-shadow:none;
+  }
+  .cta-btn.ghost:hover{border-color:#fff;}
+
+  .cta-btn.gradient{
+    background:linear-gradient(135deg, var(--green) 0%, #1f7a46 45%, var(--gold) 100%);
+    color:#fff;
+    box-shadow:0 14px 30px -12px rgba(31,122,70,0.55);
+  }
+  .cta-btn.gradient:hover{filter:brightness(1.06);}
+
+  .cta-btn.grad-outline{
+    background:
+      linear-gradient(var(--paper), var(--paper)) padding-box,
+      linear-gradient(135deg, var(--green) 0%, var(--gold) 100%) border-box;
+    border:1.5px solid transparent;
+    color:var(--forest-deep);
+    box-shadow:none;
+    font-weight:600;
+    padding:10px 19px;
+  }
+  .cta-btn.grad-outline svg{opacity:0.85;}
+  .cta-btn.grad-outline:hover{
+    background:
+      linear-gradient(135deg, var(--green) 0%, var(--gold) 100%) padding-box,
+      linear-gradient(135deg, var(--green) 0%, var(--gold) 100%) border-box;
+    color:#fff;
+    transform:translateY(-2px);
+  }
+  .hero-nav{
+    display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;
+  }
+  .menu-toggle{display:none;background:none;border:0;color:#fbf9f2;font-size:22px;cursor:pointer;}
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(1100px 500px at 78% -10%, rgba(240,180,41,0.18), transparent 60%),
+      var(--grad-paper);
+    padding-top:84px;padding-bottom:70px;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:44px;} }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--green-dim);
+    background:linear-gradient(135deg, var(--green-light) 0%, #dcefe1 100%);
+    border:1px solid var(--line);
+    padding:7px 14px;border-radius:100px;margin-bottom:22px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+  .hero h1{
+    font-size:clamp(38px,5.4vw,64px);line-height:0.98;color:var(--forest-deep);
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--green);
+    background:linear-gradient(180deg, transparent 62%, rgba(47,158,92,0.22) 62%);
+  }
+  .hero p.lead{
+    margin-top:22px;font-size:18px;color:var(--ink-soft);max-width:46ch;
+  }
+  .status-pill{
+    margin-top:30px;display:inline-flex;align-items:center;gap:12px;
+    background:linear-gradient(135deg, var(--forest) 0%, #1f7a46 100%);color:#f4f1e6;
+    border-radius:100px;padding:10px 18px 10px 14px;
+    box-shadow:var(--shadow);
+  }
+  .status-pill .pulse{
+    width:10px;height:10px;border-radius:50%;background:#5ee892;
+    box-shadow:0 0 0 0 rgba(94,232,146,0.6);
+    animation:pulse 2s infinite;
+  }
+  .status-pill.closed .pulse{background:#f0b429;animation:none;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(94,232,146,0.55);}
+    70%{box-shadow:0 0 0 10px rgba(94,232,146,0);}
+    100%{box-shadow:0 0 0 0 rgba(94,232,146,0);}
+  }
+  .status-pill .txt{font-family:'IBM Plex Mono',monospace;font-size:13px;}
+  .status-pill .txt b{color:#fff;}
+  .hero-ctas{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+
+  .hero-art{
+    position:relative;
+    background:var(--forest);
+    border-radius:24px;
+    aspect-ratio:1/1;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .hero-art svg{width:100%;height:100%;}
+
+  /* ---------- trust strip ---------- */
+  .trust{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:linear-gradient(135deg, var(--paper-alt) 0%, #e9e2cc 100%);
+  }
+  .trust .wrap{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:36px;
+  }
+  @media (max-width:720px){ .trust .wrap{grid-template-columns:1fr;gap:28px;} }
+  .trust-item{display:flex;gap:14px;align-items:flex-start;}
+  .trust-item .icon{
+    width:42px;height:42px;flex:0 0 auto;border-radius:12px;
+    background:var(--grad-primary);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 18px -8px rgba(31,122,70,0.55);
+  }
+  .trust-item h3{font-size:16px;font-weight:700;color:var(--forest-deep);}
+  .trust-item p{margin:4px 0 0;font-size:14px;color:var(--ink-soft);}
+
+  /* ---------- section heads ---------- */
+  .sec-head{max-width:560px;margin-bottom:48px;}
+  .sec-head .eyebrow{margin-bottom:14px;}
+  .sec-head h2{font-size:clamp(28px,3.6vw,40px);color:var(--forest-deep);}
+  .sec-head p{margin-top:12px;color:var(--ink-soft);font-size:16px;}
+
+  /* ---------- what we deliver ---------- */
+  .deliver-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  @media (max-width:720px){ .deliver-grid{grid-template-columns:1fr;} }
+  .deliver-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:32px;position:relative;overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .deliver-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:5px;
+    background:var(--grad-primary);
+  }
+  .deliver-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+  .deliver-card .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.12em;
+    text-transform:uppercase;color:var(--gold-deep);
+  }
+  .deliver-card h3{font-size:24px;margin-top:10px;color:var(--forest-deep);}
+  .deliver-card p{color:var(--ink-soft);margin-top:10px;font-size:15px;max-width:38ch;}
+  .deliver-card .glyph{
+    position:absolute;right:-10px;bottom:-10px;opacity:0.9;width:120px;height:120px;
+  }
+
+  /* ---------- coverage / pricing ---------- */
+  .coverage{background:var(--grad-dark);color:#f4f1e6;}
+  .coverage .sec-head p{color:#c9d9cf;}
+  .coverage .eyebrow{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.14);color:var(--gold);}
+  .cov-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:start;}
+  @media (max-width:860px){ .cov-grid{grid-template-columns:1fr;} }
+
+  .zone-list{display:flex;flex-direction:column;gap:12px;}
+  .zone{
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:14px;padding:18px 22px;cursor:pointer;
+    transition:background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .zone:hover{background:rgba(255,255,255,0.09);}
+  .zone.active{
+    background:linear-gradient(135deg, rgba(52,173,104,0.22), rgba(240,180,41,0.2));
+    border-color:var(--gold);
+  }
+  .zone-name{display:flex;align-items:center;gap:12px;font-weight:600;font-size:16px;}
+  .zone-name .pin{
+    width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,0.08);
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  }
+  .zone.active .pin{background:var(--grad-gold);color:var(--forest-deep);}
+  .zone-fee{
+    font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;
+    background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  .zone-detail{
+    background:linear-gradient(160deg, rgba(255,255,255,0.08), rgba(240,180,41,0.05));
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:18px;padding:30px;min-height:100%;
+  }
+  .zone-detail .fee-big{
+    font-family:'IBM Plex Mono',monospace;font-size:52px;font-weight:600;line-height:1;
+    background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .zone-detail .fee-label{color:#c9d9cf;font-size:13px;margin-top:6px;}
+  .zone-detail .zone-note{margin-top:20px;font-size:14.5px;color:#dbe6de;line-height:1.6;}
+  .zone-detail hr{border:none;border-top:1px solid rgba(255,255,255,0.14);margin:22px 0;}
+
+  .order-form label{
+    display:block;font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+    letter-spacing:0.1em;text-transform:uppercase;color:#9fb3a6;margin-bottom:8px;
+  }
+  .order-form textarea,
+  .order-form input{
+    width:100%;background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.16);border-radius:12px;
+    color:#f4f1e6;font-family:'Inter',sans-serif;font-size:14.5px;
+    padding:12px 14px;resize:vertical;transition:border-color .2s ease, background .2s ease;
+  }
+  .order-form textarea::placeholder,
+  .order-form input::placeholder{color:#8ea294;}
+  .order-form textarea:focus,
+  .order-form input:focus{
+    outline:none;border-color:var(--gold);background:rgba(255,255,255,0.09);
+  }
+  .order-form .field{margin-top:16px;}
+  .order-form .hint{font-size:12.5px;color:#8ea294;margin-top:6px;}
+  .order-form button.cta-btn{border:none;cursor:pointer;width:100%;justify-content:center;font-size:15px;}
+  .order-form .send-note{
+    display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12.5px;color:#9fb3a6;
+  }
+
+  /* ---------- timings ---------- */
+  .timings .wrap{
+    display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:center;
+  }
+  @media (max-width:860px){ .timings .wrap{grid-template-columns:1fr;} }
+  .clock-face{
+    background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .clock-face::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--grad-primary);
+  }
+  .clock-row{display:flex;align-items:baseline;gap:14px;justify-content:center;}
+  .clock-num{
+    font-family:'IBM Plex Mono',monospace;font-size:52px;font-weight:600;
+    background:var(--grad-primary);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .clock-to{
+    font-family:'IBM Plex Mono',monospace;font-size:16px;color:#fff;
+    background:var(--grad-gold);padding:4px 10px;border-radius:100px;
+  }
+  .clock-sub{text-align:center;color:var(--ink-soft);font-size:13.5px;margin-top:10px;}
+  .live-line{
+    display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;
+    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink-soft);
+    border-top:1px dashed var(--line);padding-top:18px;
+  }
+  .timings-copy h2{font-size:clamp(26px,3.2vw,36px);color:var(--forest-deep);}
+  .timings-copy p{color:var(--ink-soft);margin-top:14px;font-size:16px;max-width:44ch;}
+
+  /* ---------- how it works ---------- */
+  .steps{counter-reset:step;}
+  .steps-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+  }
+  @media (max-width:900px){ .steps-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .steps-grid{grid-template-columns:1fr;} }
+  .step{
+    counter-increment:step;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;position:relative;
+  }
+  .step::before{
+    content:counter(step,decimal-leading-zero);
+    font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;
+    background:var(--grad-primary);-webkit-background-clip:text;background-clip:text;color:transparent;
+    display:block;margin-bottom:14px;
+  }
+  .step h3{font-size:17px;color:var(--forest-deep);}
+  .step p{font-size:14px;color:var(--ink-soft);margin-top:8px;}
+  .step-line{
+    position:absolute;top:26px;right:-22px;width:22px;height:1px;background:var(--line);
+  }
+  @media (max-width:900px){ .step-line{display:none;} }
+
+  /* ---------- contact / footer ---------- */
+  footer{background:linear-gradient(160deg, #0a2b20 0%, #051510 100%);color:#e9e5d8;}
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;
+  }
+  @media (max-width:720px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-card{
+    background:
+      linear-gradient(#0d3324,#0d3324) padding-box,
+      linear-gradient(135deg, rgba(52,173,104,0.7), rgba(240,180,41,0.7)) border-box;
+    border:1px solid transparent;
+    border-radius:18px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+    transition:transform .2s ease;
+    width:100%;text-align:left;font:inherit;cursor:pointer;
+  }
+  .contact-card:hover{transform:translateY(-3px);}
+  .contact-card .label{font-family:'IBM Plex Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.12em;color:#9fb3a6;}
+  .contact-card .value{font-family:'IBM Plex Mono',monospace;font-size:21px;font-weight:600;margin-top:8px;color:#fff;}
+  .contact-card .go{
+    width:44px;height:44px;border-radius:50%;background:var(--grad-gold);color:var(--forest-deep);
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  }
+  footer .foot-bottom{
+    margin-top:56px;padding-top:26px;border-top:1px solid rgba(255,255,255,0.1);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+    font-size:13px;color:#8ea294;
+  }
+  footer h2{color:#fff;font-size:clamp(26px,3.4vw,38px);max-width:16ch;}
+  footer .foot-top p{color:#c9d9cf;margin-top:14px;max-width:42ch;}
+
+  .credit-bar{
+    background:#03100b;text-align:center;padding:18px 20px;
+  }
+  .credit-bar a{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.04em;
+    color:#8ea294;text-decoration:none;
+    padding:6px 14px;border-radius:100px;
+    border:1px solid rgba(255,255,255,0.12);
+    transition:color .2s ease, border-color .2s ease, background .2s ease;
+  }
+  .credit-bar a:hover{
+    color:#fff;border-color:transparent;
+    background:var(--grad-primary);
+  }
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .status-pill .pulse{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  /* ---------- PWA Header Button & Modal ---------- */
+  .header-right{
+    display:flex;align-items:center;gap:10px;
+  }
+  .pwa-install-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--grad-gold);color:var(--forest-deep);
+    font-weight:700;font-size:13.5px;
+    padding:9px 16px;border-radius:100px;border:none;cursor:pointer;
+    box-shadow:0 8px 20px -6px rgba(240,180,41,0.6);
+    transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    white-space:nowrap;
+    font-family:'Inter',system-ui,sans-serif;
+  }
+  .pwa-install-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 26px -6px rgba(240,180,41,0.8);
+    filter:brightness(1.06);
+  }
+  .pwa-install-btn.installed{
+    background:rgba(255,255,255,0.12);
+    color:#fbf9f2;
+    border:1px solid rgba(255,255,255,0.25);
+    box-shadow:none;
+  }
+  @media (max-width:560px){
+    .header-right{gap:6px;}
+    .pwa-install-btn{padding:8px 12px;font-size:12px;}
+    .whatsapp-cta span{display:none;}
+    .whatsapp-cta{padding:9px 12px;}
+  }
+
+  /* PWA Modal */
+  .pwa-modal-backdrop{
+    position:fixed;top:0;left:0;right:0;bottom:0;
+    z-index:1000;
+    background:rgba(7,28,20,0.78);
+    backdrop-filter:blur(8px);
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
+    opacity:0;pointer-events:none;
+    transition:opacity 0.25s ease;
+  }
+  .pwa-modal-backdrop.open{
+    opacity:1;pointer-events:auto;
+  }
+  .pwa-modal-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:24px;
+    width:100%;max-width:500px;
+    padding:26px;
+    box-shadow:0 25px 60px -15px rgba(10,43,32,0.6);
+    position:relative;
+    transform:translateY(18px) scale(0.97);
+    transition:transform 0.25s ease;
+    max-height:90vh;
+    overflow-y:auto;
+  }
+  .pwa-modal-backdrop.open .pwa-modal-card{
+    transform:translateY(0) scale(1);
+  }
+  .pwa-modal-close{
+    position:absolute;top:16px;right:18px;
+    background:rgba(15,61,46,0.08);border:none;
+    width:32px;height:32px;border-radius:50%;
+    font-size:22px;color:var(--forest-deep);
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background 0.2s ease;
+  }
+  .pwa-modal-close:hover{background:rgba(15,61,46,0.18);}
+  .pwa-modal-header{
+    display:flex;align-items:center;gap:14px;margin-bottom:18px;
+  }
+  .pwa-app-icon{
+    width:52px;height:52px;border-radius:13px;
+    overflow:hidden;box-shadow:0 6px 16px -4px rgba(15,61,46,0.3);
+    flex:0 0 auto;
+    background:var(--forest);
+  }
+  .pwa-app-icon img{width:100%;height:100%;object-fit:cover;}
+  .pwa-modal-header h3{font-size:19px;color:var(--forest-deep);}
+  .pwa-modal-subtitle{font-size:13px;color:var(--ink-soft);margin-top:2px;}
+
+  .pwa-os-tabs{
+    display:flex;background:rgba(15,61,46,0.08);
+    border-radius:12px;padding:4px;gap:4px;margin-bottom:18px;
+  }
+  .os-tab{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+    padding:8px 10px;border:none;background:transparent;
+    border-radius:9px;font-family:'Inter',sans-serif;
+    font-size:12.5px;font-weight:600;color:var(--ink-soft);
+    cursor:pointer;transition:all 0.2s ease;
+  }
+  .os-tab.active{
+    background:#fff;color:var(--forest-deep);
+    box-shadow:0 4px 12px -2px rgba(15,61,46,0.12);
+  }
+  .os-guide{display:none;}
+  .os-guide.active{display:block;}
+
+  .guide-banner{
+    background:var(--green-light);border:1px solid rgba(47,158,92,0.22);
+    border-radius:12px;padding:12px 14px;margin-bottom:16px;
+    font-size:12.5px;color:var(--forest-deep);line-height:1.45;
+  }
+  .badge-tag{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;
+    font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+    background:var(--green);color:#fff;padding:2px 7px;border-radius:100px;
+    margin-bottom:4px;
+  }
+  .native-prompt-box{margin-bottom:16px;text-align:center;}
+  .direct-install-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;background:var(--grad-primary);color:#fff;
+    font-weight:700;font-size:14px;padding:11px;
+    border-radius:12px;border:none;cursor:pointer;
+    box-shadow:0 10px 24px -8px rgba(31,122,70,0.5);
+    transition:transform 0.18s ease, filter 0.18s ease;
+    font-family:'Inter',sans-serif;
+  }
+  .direct-install-btn:hover{transform:translateY(-2px);filter:brightness(1.05);}
+  .or-divider{display:block;font-size:12px;color:var(--ink-soft);margin-top:8px;font-style:italic;}
+
+  .step-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
+  .step-item{
+    display:flex;gap:12px;align-items:flex-start;
+    background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:11px 13px;
+  }
+  .step-num{
+    width:24px;height:24px;border-radius:50%;
+    background:var(--forest);color:var(--gold);
+    font-weight:700;font-size:12px;
+    display:flex;align-items:center;justify-content:center;
+    flex:0 0 auto;margin-top:2px;
+  }
+  .step-text strong{display:block;font-size:13px;color:var(--forest-deep);}
+  .step-text p{margin:2px 0 0;font-size:12px;color:var(--ink-soft);line-height:1.4;}
+  .icon-chip{
+    display:inline-block;background:var(--paper-alt);border:1px solid var(--line);
+    padding:1px 5px;border-radius:4px;font-family:'IBM Plex Mono',monospace;
+    font-size:11px;font-weight:600;color:var(--forest-deep);
+  }
+  .pwa-modal-footer{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <img src="/favicon.png" alt="Armour Colony Delivery Logo" class="brand-mark" style="width:36px;height:36px;border-radius:10px;object-fit:cover;">
+      <span class="brand-name">Armour Colony Delivery<small>We deliver, you relax</small></span>
+    </a>
+    <nav class="links">
+      <a href="#deliver">What we deliver</a>
+      <a href="#coverage">Coverage &amp; pricing</a>
+      <a href="#timings">Timings</a>
+      <a href="#how">How it works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-right">
+      <button id="pwaInstallBtn" class="pwa-install-btn" onclick="openPwaModal()" aria-label="Install App">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Install App</span>
+      </button>
+      <a class="cta-btn whatsapp-cta" href="https://wa.me/923335490334?text=Hi!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.8 14.3c-.2.7-1.4 1.4-2 1.5-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.9 1.5 2 2.4 1.3 1.1 2.4 1.5 2.7 1.6.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2 0 1.5.7 1.7.8.2.1.4.2.4.3.1.2.1.7-.1 1.4z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal in">
+        <span class="eyebrow"><span class="dot"></span>Armour Colony · Phase 1–3</span>
+        <h1>Fast delivery<br>across Armour<br>Colony.</h1>
+
+        <div id="statusPill" class="status-pill">
+          <span class="pulse"></span>
+          <span class="txt" id="statusText">Checking today's hours…</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a class="cta-btn gradient" href="#coverage" id="heroSelectBtn">Select your order</a>
+        </div>
+        <div class="hero-nav">
+          <a class="cta-btn grad-outline" href="#deliver">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Details
+          </a>
+          <a class="cta-btn grad-outline" href="#timings">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5v5l3.2 1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Timings
+          </a>
+          <a class="cta-btn grad-outline" href="#how">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12h5M4 7h11M4 17h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19 15l2 2-2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            How it works
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-art reveal in" aria-hidden="true">
+        <svg viewBox="0 0 480 480" width="100%" height="100%">
+          <defs>
+            <radialGradient id="glow" cx="72%" cy="12%" r="75%">
+              <stop offset="0%" stop-color="#2a8a58"/>
+              <stop offset="45%" stop-color="#123f2e"/>
+              <stop offset="100%" stop-color="#061913"/>
+            </radialGradient>
+          </defs>
+          <rect width="480" height="480" fill="url(#glow)"/>
+          <!-- route dashes -->
+          <path id="routePath" d="M70 360 C 140 300, 150 220, 230 190 S 360 130, 410 90" fill="none" stroke="#F0B429" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/>
+          <!-- shop pin -->
+          <g transform="translate(70,360)">
+            <circle r="16" fill="#F7F4EA"/>
+            <path d="M-7 -2 L0 -9 L7 -2 V7 H-7 Z" fill="#0F3D2E"/>
+          </g>
+          <!-- home pin -->
+          <g transform="translate(410,90)">
+            <circle r="18" fill="#F0B429"/>
+            <path d="M-8 -2 L0 -10 L8 -2 V8 H3 V1 H-3 V8 H-8 Z" fill="#0F3D2E"/>
+          </g>
+          <!-- scooter marker traveling the path -->
+          <g id="scooterMark">
+            <circle r="12" fill="#F7F4EA"/>
+            <path d="M-5 2 h10 M-3 -3 h6 M0 -3 v-3" stroke="#0F3D2E" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </g>
+          <animateMotion xlink:href="#scooterMark" dur="6s" repeatCount="indefinite" rotate="auto">
+            <mpath xlink:href="#routePath"/>
+          </animateMotion>
+          <!-- skyline silhouette -->
+          <g fill="#0a2b20" opacity="0.7">
+            <rect x="20" y="400" width="18" height="60"/>
+            <rect x="46" y="380" width="14" height="80"/>
+            <rect x="66" y="410" width="22" height="50"/>
+            <circle cx="77" cy="398" r="9"/>
+            <rect x="96" y="420" width="16" height="40"/>
+          </g>
+          <text x="24" y="452" fill="#c9d9cf" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1">PHASE 1 → PHASE 3</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="trust" style="padding:52px 0;">
+    <div class="wrap">
+      <div class="trust-item reveal">
+        <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <div><h3>Fast delivery</h3><p>Orders move quick — you're not left refreshing your phone.</p></div>
+      </div>
+      <div class="trust-item reveal">
+        <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><h3>Safe &amp; reliable</h3><p>Same runner, same route, every day — nothing left to chance.</p></div>
+      </div>
+      <div class="trust-item reveal">
+        <span class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 13.5s1.2 2 3.5 2 3.5-2 3.5-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg></span>
+        <div><h3>Your satisfaction</h3><p>If the basket's wrong, we make it right. Simple as that.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DELIVER -->
+  <section id="deliver">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span>What we deliver</span>
+        <h2>Two kinds of runs. One doorstep.</h2>
+        <p>Send a list, a photo, or just a voice note — we'll pick it up on our next pass through your phase.</p>
+      </div>
+      <div class="deliver-grid">
+        <div class="deliver-card reveal">
+          <span class="tag">Fresh &amp; weekly</span>
+          <h3>Groceries</h3>
+          <p>Vegetables, fruit, dairy, meat, pantry staples — picked from the market and brought straight to your kitchen.</p>
+          <svg class="glyph" viewBox="0 0 100 100" fill="none"><path d="M20 30h60l-6 40H26L20 30z" stroke="#E7DFC6" stroke-width="2.5"/><path d="M14 20h10l4 10" stroke="#E7DFC6" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="deliver-card reveal">
+          <span class="tag">Anytime</span>
+          <h3>Daily essentials</h3>
+          <p>Milk, bread, eggs, cleaning supplies, the odd forgotten item — anything from a nearby store to your gate.</p>
+          <svg class="glyph" viewBox="0 0 100 100" fill="none"><rect x="24" y="26" width="42" height="52" rx="4" stroke="#E7DFC6" stroke-width="2.5"/><path d="M32 26v-6a13 13 0 0126 0v6" stroke="#E7DFC6" stroke-width="2.5"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERAGE & PRICING -->
+  <section class="coverage" id="coverage">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot" style="background:var(--gold)"></span>Coverage &amp; pricing</span>
+        <h2>One flat fee by phase. No surprises at the door.</h2>
+        <p>Pick your phase to see the delivery charge — the price you're quoted is the price you pay.</p>
+      </div>
+      <div class="cov-grid">
+        <div class="zone-list" id="zoneList">
+          <div class="zone active reveal" data-fee="70" data-name="Phase 1" data-note="The closest loop — usually the first stop on every run.">
+            <span class="zone-name"><span class="pin"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg></span>Phase 1</span>
+            <span class="zone-fee">Rs. 70</span>
+          </div>
+          <div class="zone reveal" data-fee="100" data-name="Phase 2 &amp; 3" data-note="A longer loop, same reliability — added to the run right after Phase 1.">
+            <span class="zone-name"><span class="pin"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg></span>Phase 2 &amp; 3</span>
+            <span class="zone-fee">Rs. 100</span>
+          </div>
+        </div>
+        <div class="zone-detail reveal">
+          <div class="fee-label mono">DELIVERY CHARGE</div>
+          <div class="fee-big" id="feeBig">Rs. 70</div>
+          <div class="fee-label" id="feeZoneName" style="margin-top:2px;">Phase 1</div>
+          <hr>
+          <p class="zone-note" id="feeNote">The closest loop — usually the first stop on every run.</p>
+
+          <div class="order-form" id="orderForm">
+            <div class="field">
+              <label for="orderList">Your list</label>
+              <textarea id="orderList" rows="4" placeholder="e.g. 2kg tomatoes, 1 dozen eggs, 1 bread, 1L milk"></textarea>
+            </div>
+            <div class="field">
+              <label for="orderAddress">House / street, landmark</label>
+              <input id="orderAddress" type="text" placeholder="e.g. House 12, Street 4, near the mosque">
+            </div>
+            <a href="https://wa.me/923335490334" target="_blank" rel="noopener" class="cta-btn" id="sendOrderBtn" style="margin-top:20px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.8 14.3c-.2.7-1.4 1.4-2 1.5-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.9 1.5 2 2.4 1.3 1.1 2.4 1.5 2.7 1.6.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2 0 1.5.7 1.7.8.2.1.4.2.4.3.1.2.1.7-.1 1.4z"/></svg>
+              Send this order on WhatsApp
+            </a>
+            <p class="send-note">Opens WhatsApp with your list, address and delivery fee already filled in.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMINGS -->
+  <section class="timings" id="timings">
+    <div class="wrap">
+      <div class="clock-face reveal">
+        <div class="clock-row">
+          <span class="clock-num">12</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:20px;color:var(--ink-soft);">PM</span>
+          <span class="clock-to">to</span>
+          <span class="clock-num">12</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:20px;color:var(--ink-soft);">AM</span>
+        </div>
+        <p class="clock-sub">Every day, including weekends</p>
+        <div class="live-line">
+          <span class="pulse" id="clockPulse" style="width:8px;height:8px;border-radius:50%;background:#2f9e5c;"></span>
+          <span id="clockLive">—</span>
+        </div>
+      </div>
+      <div class="timings-copy reveal">
+        <span class="eyebrow"><span class="dot"></span>Timings</span>
+        <h2>Open noon to midnight, on the dot.</h2>
+        <p>Message anytime during our hours and we'll fold your order into the next run through your phase. Outside these hours, send your list anyway — it's the first one out the door when we open.</p>
+        <a class="cta-btn" style="margin-top:22px;" href="https://wa.me/923335490334?text=Hi!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">Message us now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="steps" id="how">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="dot"></span>How it works</span>
+        <h2>Four steps, no app required.</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step reveal"><h3>Send your list</h3><p>Text, voice note, or a photo of what's in the fridge that's missing.</p><span class="step-line"></span></div>
+        <div class="step reveal"><h3>We confirm the total</h3><p>Item cost plus your phase's flat delivery fee — no hidden charges.</p><span class="step-line"></span></div>
+        <div class="step reveal"><h3>Pay your way</h3><p>Easypaisa transfer or cash on delivery, whichever's easier.</p><span class="step-line"></span></div>
+        <div class="step reveal"><h3>It's at your gate</h3><p>Delivered on the next run through your phase, same day.</p></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- CONTACT / FOOTER -->
+<footer id="contact">
+  <div class="wrap" style="padding:90px 0 40px;">
+    <div class="foot-top reveal">
+      <h2>You need it, we deliver it.</h2>
+      <p>Reach us on WhatsApp for orders and questions, or send payment directly on Easypaisa.</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card reveal" href="https://wa.me/923335490334?text=Hi!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">
+        <div>
+          <div class="label">WhatsApp</div>
+          <div class="value">0333 5490334</div>
+        </div>
+        <span class="go">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="#0F3D2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+      <button type="button" class="contact-card reveal" id="easypaisaCard">
+        <div>
+          <div class="label" id="easypaisaLabel">Easypaisa · tap to copy</div>
+          <div class="value">0336 7527090</div>
+        </div>
+        <span class="go" id="easypaisaIcon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="7" y="7" width="11" height="13" rx="2" stroke="#0F3D2E" stroke-width="2"/><path d="M17 7V5a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2h2" stroke="#0F3D2E" stroke-width="2"/></svg>
+        </span>
+      </button>
+    </div>
+    <div class="foot-bottom">
+      <span>Armour Colony Delivery Service — Phase 1, 2 &amp; 3</span>
+      <span>Open daily, 12 PM – 12 AM</span>
+    </div>
+  </div>
+</footer>
+
+<div class="credit-bar">
+  <a href="https://zavthecreator.netlify.app/" target="_blank" rel="noopener">Build your own website</a>
+</div>
+
+<script>
+  // ---- Live open/closed status (Asia/Karachi time) ----
+  function updateStatus(){
+    const now = new Date();
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', hour12: false
+    }).formatToParts(now);
+    const h = parseInt(parts.find(p=>p.type==='hour').value, 10);
+    const m = parseInt(parts.find(p=>p.type==='minute').value, 10);
+    const minutesNow = h*60+m;
+    const openAt = 12*60;      // 12:00 PM
+    const closeAt = 24*60;     // 12:00 AM
+    const isOpen = minutesNow >= openAt && minutesNow < closeAt;
+
+    const pill = document.getElementById('statusPill');
+    const txt = document.getElementById('statusText');
+    const clockLive = document.getElementById('clockLive');
+    const clockPulse = document.getElementById('clockPulse');
+
+    const hh = String(h).padStart(2,'0'), mm = String(m).padStart(2,'0');
+    const displayH12 = ((h % 12) || 12);
+    const ampm = h < 12 ? 'AM' : 'PM';
+    const hh12 = String(displayH12).padStart(2,'0');
+
+    if(isOpen){
+      const minsLeft = closeAt - minutesNow;
+      const hrsLeft = Math.floor(minsLeft/60), minsRem = minsLeft%60;
+      pill.classList.remove('closed');
+      txt.innerHTML = `<b>Open now</b> · closes in ${hrsLeft}h ${minsRem}m`;
+      clockLive.textContent = `It's ${hh12}:${mm} ${ampm} in Nowshera — we're open`;
+      clockPulse.style.background = '#2f9e5c';
+    } else {
+      const minsLeft = minutesNow < openAt ? (openAt - minutesNow) : (24*60 - minutesNow) + openAt;
+      const hrsLeft = Math.floor(minsLeft/60), minsRem = minsLeft%60;
+      pill.classList.add('closed');
+      txt.innerHTML = `<b>Closed</b> · opens in ${hrsLeft}h ${minsRem}m`;
+      clockLive.textContent = `It's ${hh12}:${mm} ${ampm} in Nowshera — back at noon`;
+      clockPulse.style.background = '#f0b429';
+    }
+  }
+  updateStatus();
+  setInterval(updateStatus, 30000);
+
+  // ---- Phase pricing selector ----
+  const zones = document.querySelectorAll('.zone');
+  const feeBig = document.getElementById('feeBig');
+  const feeZoneName = document.getElementById('feeZoneName');
+  const feeNote = document.getElementById('feeNote');
+  zones.forEach(z=>{
+    z.addEventListener('click', ()=>{
+      zones.forEach(o=>o.classList.remove('active'));
+      z.classList.add('active');
+      feeBig.textContent = 'Rs. ' + z.dataset.fee;
+      feeZoneName.textContent = z.dataset.name.replace('&amp;','&');
+      feeNote.textContent = z.dataset.note;
+      updateOrderLink();
+    });
+    z.addEventListener('keypress', (e)=>{ if(e.key==='Enter') z.click(); });
+  });
+
+  // ---- Order builder: keep the WhatsApp link's href up to date ----
+  const WHATSAPP_NUMBER = '923335490334'; // country code + number, no leading zero or +
+  const sendOrderBtn = document.getElementById('sendOrderBtn');
+  const orderListEl = document.getElementById('orderList');
+  const orderAddressEl = document.getElementById('orderAddress');
+
+  function updateOrderLink(){
+    const list = orderListEl.value.trim();
+    const address = orderAddressEl.value.trim();
+    const activeZone = document.querySelector('.zone.active');
+    const phaseName = activeZone ? activeZone.dataset.name.replace('&amp;','&') : 'Phase 1';
+    const fee = activeZone ? activeZone.dataset.fee : '70';
+
+    const lines = [
+      'Hi! I\'d like to place an order with Armour Colony Delivery Service.',
+      '',
+      'My list:',
+      list ? list : '(will send items separately)',
+      '',
+      `Delivery zone: ${phaseName} (Rs. ${fee})`,
+      address ? `Address: ${address}` : 'Address: (will share on chat)'
+    ];
+    const message = lines.join('\n');
+    sendOrderBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  }
+  orderListEl.addEventListener('input', updateOrderLink);
+  orderAddressEl.addEventListener('input', updateOrderLink);
+  updateOrderLink();
+
+  document.getElementById('heroSelectBtn').addEventListener('click', ()=>{
+    setTimeout(()=>{ orderListEl.focus(); }, 450);
+  });
+
+  // ---- Easypaisa: copy number to clipboard (no universal web link exists for Easypaisa) ----
+  const easypaisaCard = document.getElementById('easypaisaCard');
+  const easypaisaLabel = document.getElementById('easypaisaLabel');
+  const easypaisaIcon = document.getElementById('easypaisaIcon');
+  const EASYPAISA_NUMBER = '03367527090';
+  const checkIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0F3D2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const copyIcon = easypaisaIcon.innerHTML;
+
+  easypaisaCard.addEventListener('click', async ()=>{
+    try{
+      await navigator.clipboard.writeText(EASYPAISA_NUMBER);
+    }catch(err){
+      const tmp = document.createElement('textarea');
+      tmp.value = EASYPAISA_NUMBER;
+      tmp.style.position = 'fixed';
+      tmp.style.opacity = '0';
+      document.body.appendChild(tmp);
+      tmp.select();
+      try{ document.execCommand('copy'); }catch(e){}
+      document.body.removeChild(tmp);
+    }
+    easypaisaLabel.textContent = 'Copied — paste in Easypaisa';
+    easypaisaIcon.innerHTML = checkIcon;
+    clearTimeout(easypaisaCard._resetTimer);
+    easypaisaCard._resetTimer = setTimeout(()=>{
+      easypaisaLabel.textContent = 'Easypaisa · tap to copy';
+      easypaisaIcon.innerHTML = copyIcon;
+    }, 2200);
+  });
+
+  // ---- In-page navigation: scroll via JS instead of relying on default <a href="#..."> behavior ----
+  function goToSection(id){
+    const target = document.getElementById(id);
+    if(!target) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(link=>{
+    const id = link.getAttribute('href').slice(1);
+    if(!id) return;
+    link.addEventListener('click', (e)=>{
+      e.preventDefault();
+      goToSection(id);
+    });
+  });
+
+  // ---- Scroll reveal ----
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ---- Mobile nav (simple: scroll links already work; ensure smooth focus) ----
+
+  // ---- PWA Service Worker & Install Logic ----
+  let deferredPrompt = null;
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('PWA Service Worker registered:', reg.scope))
+        .catch(err => console.log('PWA Service Worker registration error:', err));
+    });
+  }
+
+  function detectPlatform() {
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(ua));
+    const isAndroid = /Android/.test(ua);
+    const isWindows = /Windows/.test(ua);
+    return { isIOS, isAndroid, isWindows };
+  }
+
+  function isAppInstalled() {
+    return window.matchMedia('(display-mode: standalone)').matches ||
+           window.navigator.standalone === true ||
+           localStorage.getItem('pwa_installed') === 'true';
+  }
+
+  function updateInstallBtnUI(installed) {
+    const btn = document.getElementById('pwaInstallBtn');
+    if (!btn) return;
+    if (installed || isAppInstalled()) {
+      btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>App Installed</span>`;
+      btn.classList.add('installed');
+    } else {
+      btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span>Install App</span>`;
+      btn.classList.remove('installed');
+    }
+  }
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    console.log('beforeinstallprompt event captured');
+    updateInstallBtnUI(false);
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    localStorage.setItem('pwa_installed', 'true');
+    updateInstallBtnUI(true);
+    console.log('PWA Armour App installed');
+  });
+
+  function openPwaModal() {
+    const platform = detectPlatform();
+    const modal = document.getElementById('pwaModal');
+    if (!modal) return;
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+
+    if (platform.isIOS) {
+      switchOsTab('ios');
+    } else if (platform.isAndroid) {
+      switchOsTab('android');
+    } else {
+      switchOsTab('windows');
+    }
+  }
+
+  function triggerNativeInstall() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          localStorage.setItem('pwa_installed', 'true');
+          updateInstallBtnUI(true);
+          closePwaModal();
+        }
+        deferredPrompt = null;
+      });
+    } else {
+      alert('To install, follow the step-by-step instructions shown below for your device browser!');
+    }
+  }
+
+  function closePwaModal() {
+    const modal = document.getElementById('pwaModal');
+    if (modal) {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function switchOsTab(os) {
+    document.querySelectorAll('.os-tab').forEach(t => {
+      t.classList.toggle('active', t.getAttribute('data-os') === os);
+    });
+    document.querySelectorAll('.os-guide').forEach(g => {
+      g.classList.toggle('active', g.id === `guide-${os}`);
+    });
+  }
+
+  // Close modal on backdrop click or Escape key
+  document.addEventListener('click', (e) => {
+    const modal = document.getElementById('pwaModal');
+    if (modal && e.target === modal) {
+      closePwaModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePwaModal();
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateInstallBtnUI(isAppInstalled());
+  });
+</script>
+
+<!-- PWA Installation Modal -->
+<div id="pwaModal" class="pwa-modal-backdrop" aria-hidden="true">
+  <div class="pwa-modal-card" role="dialog" aria-labelledby="pwaModalTitle">
+    <button class="pwa-modal-close" onclick="closePwaModal()" aria-label="Close modal">&times;</button>
+    
+    <div class="pwa-modal-header">
+      <div class="pwa-app-icon">
+        <img src="/icon-192.png" alt="Armour Colony Delivery App Icon" width="52" height="52" />
+      </div>
+      <div>
+        <h3 id="pwaModalTitle">Install Armour Delivery App</h3>
+        <p class="pwa-modal-subtitle">Same-day delivery app for iOS, Android & Windows</p>
+      </div>
+    </div>
+
+    <!-- OS Selector Tabs -->
+    <div class="pwa-os-tabs">
+      <button class="os-tab active" data-os="ios" onclick="switchOsTab('ios')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.34c.67-.82 1.12-1.96.99-3.1-.96.04-2.13.64-2.82 1.45-.61.71-1.14 1.87-.99 2.99 1.08.08 2.18-.53 2.82-1.34z"/></svg>
+        iOS / Apple
+      </button>
+      <button class="os-tab" data-os="android" onclick="switchOsTab('android')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.52 14.33c-.46 0-.83-.37-.83-.83 0-.46.37-.83.83-.83s.83.37.83.83c0 .46-.37.83-.83.83zm-11.04 0c-.46 0-.83-.37-.83-.83 0-.46.37-.83.83-.83s.83.37.83.83c0 .46-.37.83-.83.83zm11.39-4.11l1.63-2.83c.12-.2.05-.46-.15-.58a.428.428 0 00-.58.15l-1.67 2.9A11.75 11.75 0 0012 8.75c-1.85 0-3.58.42-5.1 1.16L5.23 7.01a.428.428 0 00-.58-.15c-.2.12-.27.38-.15.58l1.63 2.83C3.58 11.78 1.83 14.28 1.5 17.25h21c-.33-2.97-2.08-5.47-4.63-7.03z"/></svg>
+        Android
+      </button>
+      <button class="os-tab" data-os="windows" onclick="switchOsTab('windows')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.95-9.6L24 0v11.4H10.95M0 12.6h9.75v9.451L0 20.699M10.95 12.6H24V24l-13.05-1.801"/></svg>
+        Windows / PC
+      </button>
+    </div>
+
+    <!-- Instructions Body -->
+    <div class="pwa-os-body">
+      <!-- iOS Guide -->
+      <div id="guide-ios" class="os-guide active">
+        <div class="guide-banner">
+          <span class="badge-tag">Safari Instructions</span>
+          <p>Apple iOS allows quick PWA installation directly through Safari in 3 simple steps.</p>
+        </div>
+        <ol class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <strong>Tap the Share Button</strong>
+              <p>In Safari, tap the <strong>Share icon</strong> <span class="icon-chip">⎋</span> at the bottom (or top on iPad) of your screen.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <strong>Select "Add to Home Screen"</strong>
+              <p>Scroll down the share sheet and tap <strong>"Add to Home Screen"</strong> <span class="icon-chip">＋</span>.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <strong>Tap "Add" in Top Right</strong>
+              <p>Confirm the app name and tap <strong>Add</strong>. Armour Delivery will now launch like a native app!</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Android Guide -->
+      <div id="guide-android" class="os-guide">
+        <div class="guide-banner">
+          <span class="badge-tag">Android PWA</span>
+          <p>Install directly to your Android home screen for instant orders & offline access.</p>
+        </div>
+        <div id="androidNativePromptBox" class="native-prompt-box">
+          <button id="androidDirectBtn" class="direct-install-btn" onclick="triggerNativeInstall()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download &amp; Install App
+          </button>
+          <span class="or-divider">or install manually via Chrome menu:</span>
+        </div>
+        <ol class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <strong>Open Browser Menu</strong>
+              <p>Tap the 3 vertical dots <strong>(⋮)</strong> in Chrome / Edge top right corner.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <strong>Tap "Install App" or "Add to Home Screen"</strong>
+              <p>Select <strong>Install App</strong> from the menu choices.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <strong>Confirm Install</strong>
+              <p>Tap <strong>Install</strong> to place the Armour Colony Delivery app icon on your phone.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Windows / Mac Guide -->
+      <div id="guide-windows" class="os-guide">
+        <div class="guide-banner">
+          <span class="badge-tag">Windows / Desktop</span>
+          <p>Run Armour Colony Delivery in its own desktop window on Windows, Mac, or ChromeOS.</p>
+        </div>
+        <div id="desktopNativePromptBox" class="native-prompt-box">
+          <button id="desktopDirectBtn" class="direct-install-btn" onclick="triggerNativeInstall()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Install Desktop App
+          </button>
+          <span class="or-divider">or install via browser address bar:</span>
+        </div>
+        <ol class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <strong>Check Browser Address Bar</strong>
+              <p>Look at the right edge of your Chrome/Edge URL bar for the <strong>Install ⊕ / Computer icon</strong>.</p>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <strong>Click "Install"</strong>
+              <p>Click the icon or open browser menu ➔ <strong>"Install Armour Colony Delivery..."</strong></p>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <strong>Launch from Start Menu</strong>
+              <p>You can now open the app anytime directly from your Windows Start Menu or Desktop shortcut!</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="pwa-modal-footer">
+      <button class="cta-btn gradient" onclick="closePwaModal()" style="width:100%;justify-content:center;">Got it, Close</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
